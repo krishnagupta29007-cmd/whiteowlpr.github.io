@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>White Owl - 360 Vision to Success</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  /* Reset and Base */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1e1f29, #3c3f58);
+    color: #f0f0f7;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  a {
+    color: #5ce1e6;
+    text-decoration: none;
+    transition: color 0.35s ease;
+  }
+  a:hover {
+    color: #3ad1d9;
+  }
+  h1, h2, h3 {
+    font-weight: 700;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 20px;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    padding-bottom: 3rem;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 3px;
+    opacity: 0;
+    transform: translateY(-40px);
+    animation: slideInDown 1s ease forwards;
+  }
+  header p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #a7a7b7;
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+    animation-delay: 1s;
+  }
+
+  /* Sections - Start hidden */
+  section {
+    margin: 50px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Expertise */
+  .expertise-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .expertise-item {
+    background: #2d2f42;
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1 1 260px;
+    box-shadow: 0 0 12px #5ce1e6aa;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
+  }
+  .expertise-item:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 0 22px #3ad1d9cc;
+  }
+  .expertise-item h3 {
+    margin-bottom: 12px;
+    color: #5ce1e6;
+  }
+
+  /* Influencer Marketing */
+  .influencer {
+    background: #2d2f42dd;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 18px #3ad1d9cc;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .influencer h2 {
+    color: #3ad1d9;
+    margin-bottom: 15px;
+  }
+  .influencer p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  .influencer ul {
+    list-style-type: square;
+    padding-left: 20px;
+    color: #cdf5fb;
+  }
+  .influencer ul li {
+    margin-bottom: 8px;
+  }
+
+  /* Clients */
+  .clients {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+  .clients div {
+    background: #1f2239;
+    padding: 12px 22px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #2e8cad80;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #8ad6de;
+    user-select: none;
+    text-align: center;
+    min-width: 110px;
+    transition: transform 0.35s ease, color 0.35s ease;
+  }
+  .clients div:hover {
+    transform: scale(1.18);
+    color: #3ad1d9;
+  }
+
+  /* Brand Values */
+  .brand-values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 25px;
+  }
+  .value-box {
+    background: #2e90a1;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #49c2dbcc;
+    padding: 25px;
+    color: #eaf7fb;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    cursor: default;
+    transition: background-color 0.5s ease, transform 0.4s ease;
+  }
+  .value-box:hover {
+    background-color: #3ad1d9;
+    transform: scale(1.08);
+  }
+
+  /* Contact Section */
+  .contact {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(90deg, #255a7b, #3ad1d9);
+    border-radius: 20px;
+    color: #fff;
+    box-shadow: 0 0 25px #4bd8e9cc;
+    transition: transform 0.5s ease;
+  }
+  .contact:hover {
+    transform: scale(1.05);
+  }
+  .contact h2 {
+    margin-bottom: 15px;
+    font-size: 2rem;
+  }
+  .contact a, .contact p {
+    font-size: 1.2rem;
+    margin: 8px 0;
+    word-break: break-word;
+  }
+
+  /* Animations */
+  @keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-40px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .expertise-list {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .brand-values {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 400px) {
+    .brand-values {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>WHITE OWL</h1>
+  <p>360 Vision to Success — Presented by Megha Gupta</p>
+</header>
+
+<div class="container">
+
+  <section id="expertise">
+    <h2>Our Expertise</h2>
+    <div class="expertise-list">
+      <div class="expertise-item">
+        <h3>Digital & Social Media Marketing</h3>
+        <p>Instagram, Facebook, Twitter, YouTube & LinkedIn Marketing and Posting</p>
+      </div>
+      <div class="expertise-item">
+        <h3>Graphics & Content Writing</h3>
+        <p>Creative content and engaging graphics tailored to your brand</p>
+      </div>
+      <div class="expertise-item">
+        <h3>VFX & CGI Advertisements</h3>
+        <p>High-impact visual effects and animations for ads</p>
+      </div>
+      <div class="expertise-item">
+        <h3>Review Marketing</h3>
+        <p>Zomato, Swiggy, Amazon & Flipkart Review Strategies</p>
+      </div>
+      <div class="expertise-item">
+        <h3>Paid Advertisement</h3>
+        <p>Instagram Ads, Facebook Ads & Google Ads Campaigns</p>
+      </div>
+      <div class="expertise-item">
+        <h3>In-House UGC Creators</h3>
+        <p>Unique user-generated content crafted by our in-house creators</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="influencer">
+    <div class="influencer">
+      <h2>Influencer Marketing & UGC Creators</h2>
+      <p>We collaborate with 10,000+ nano, micro, and macro influencers across diverse categories to create exclusive content promoting your products and services. Our influencers post on high-engagement platforms such as Instagram, Facebook, Twitter, YouTube, and LinkedIn.</p>
+      <p>Our offerings include:</p>
+      <ul>
+        <li>Exclusive influencer content creation</li>
+        <li>Influencer meet-ups for launch and ongoing promotions</li>
+        <li>Posting on influencer social handles</li>
+        <li>Full support from UGC creators for exclusivity</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="events">
+    <h2>Events & Promotions</h2>
+    <p>We excel at themed exhibition displays, product presentations, and instore experience reviews to promote your brand effectively.</p>
+    <p>Our network includes Punjabi Bollywood singers, stand-up comedians, and stage artists to add star power to your marketing events.</p>
+    <p>We leverage PR to maintain good media relations, build brand awareness, and engage your target audience.</p>
+  </section>
+
+  <section id="clients">
+    <h2>Happy Clients</h2>
+    <div class="clients" aria-label="Client brand logos and names">
+      <div>ILUZN</div>
+      <div>SISLI</div>
+      <div>THE DOM</div>
+      <div>TYRUS</div>
+      <div>DUTYFREE</div>
+      <div>LA MOCA</div>
+      <div>FUNDERLAND</div>
+      <div>PRIVEE</div>
+      <div>CLINQUE</div>
+      <div>HARLEQUIN</div>
+      <div>LIT LOUNGE</div>
+      <div>STATION BAR</div>
+      <div>GOA RESORT</div>
+    </div>
+  </section>
+
+  <section id="brand-value">
+    <h2>Brand Value - How We Stand Out</h2>
+    <div class="brand-values">
+      <div class="value-box">Innovation</div>
+      <div class="value-box">Goals</div>
+      <div class="value-box">Equipment</div>
+      <div class="value-box">Integrity</div>
+      <div class="value-box">Responsibility</div>
+      <div class="value-box">Transparency</div>
+      <div class="value-box">Trust</div>
+      <div class="value-box">Change & Exclusivity</div>
+      <div class="value-box">Serious Responsibility</div>
+      <div class="value-box">Client Notification</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Get In Touch</h2>
+      <p>Phone: <a href="tel:+919667376370">9667376370</a></p>
+      <p>Instagram: <a href="https://instagram.com/whiteowlofficials" target="_blank">@whiteowlofficials</a></p>
+      <p>Email: <a href="mailto:Whiteowlpr143@gmail.com">Whiteowlpr143@gmail.com</a></p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Scroll-triggered animation using Intersection Observer
+  const sections = document.querySelectorAll('section');
+
+  const observerOptions = {
+    threshold: 0.2
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>
